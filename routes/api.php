@@ -12,7 +12,7 @@ use App\Http\Controllers\GeneralNotifications;
 use App\Http\Controllers\UserSettings;
 use App\Http\Controllers\AuthController;
 // CHAT APP
-Route::get('/test', [NonFriendController::class, 'test']);
+
 
 Route::middleware('verifyUser')->group(function () {
     Route::post('/nonfriends', [NonFriendController::class, 'index']);
@@ -25,5 +25,6 @@ Route::middleware('verifyUser')->group(function () {
 });
 
 // Routes not affected by the middleware
+Route::get('/test', [NonFriendController::class, 'test']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
