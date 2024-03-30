@@ -34,4 +34,9 @@ class NonFriendController extends Controller
 
         return response()->json($formattedNonFriends);
     }
+    public function test()
+{
+    return response()->json(['message' => User::all()]);
+}
+
 }

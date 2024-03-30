@@ -12,6 +12,8 @@ use App\Http\Controllers\GeneralNotifications;
 use App\Http\Controllers\UserSettings;
 use App\Http\Controllers\AuthController;
 // CHAT APP
+Route::get('/test', [NonFriendController::class, 'test']);
+
 Route::middleware('verifyUser')->group(function () {
     Route::post('/nonfriends', [NonFriendController::class, 'index']);
     Route::post('/sendrequest', [FriendsRequests::class, 'index']);
