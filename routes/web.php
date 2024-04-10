@@ -15,7 +15,7 @@ use App\Http\Controllers\CHAT\NonFriendController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/test', [NonFriendController::class, 'test']);
+// Route::get('/test', [NonFriendController::class, 'test']);
 Route::get('/', function () {
     return view('welcome');
 });

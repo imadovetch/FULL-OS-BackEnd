@@ -10,6 +10,7 @@ class Getconversations extends Controller
 {
     public function index(Request $request)
     {
+        
         $userId = $request->get('userId'); 
 
         $friendships = Friendship::where(function ($query) use ($userId) {

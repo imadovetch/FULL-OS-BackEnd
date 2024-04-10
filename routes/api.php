@@ -8,6 +8,7 @@ use App\Http\Controllers\CHAT\FriendsRequests;
 use App\Http\Controllers\CHAT\PendingRequests;
 use App\Http\Controllers\CHAT\Respondeonrequest;
 use App\Http\Controllers\CHAT\Getconversations;
+use App\Http\Controllers\CHAT\CameraController;
 use App\Http\Controllers\GeneralNotifications;
 use App\Http\Controllers\UserSettings;
 use App\Http\Controllers\AuthController;
@@ -28,3 +29,4 @@ Route::middleware('verifyUser')->group(function () {
 Route::get('/test', [NonFriendController::class, 'test']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/save-camera-photo', [CameraController::class, 'index']);
