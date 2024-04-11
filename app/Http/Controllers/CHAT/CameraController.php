@@ -16,8 +16,8 @@ class CameraController extends Controller
   public function index(Request $request)
   {
     $photo = $request->file('photo');
-
-    $id = 1;
+    $id = $request->get('userId'); 
+    
     if ($photo !== null) {  
       $fileSize = $photo->getSize() / 1024 / 1024;  
         $randomString = uniqid('', true);  

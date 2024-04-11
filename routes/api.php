@@ -12,6 +12,7 @@ use App\Http\Controllers\CHAT\CameraController;
 use App\Http\Controllers\GeneralNotifications;
 use App\Http\Controllers\UserSettings;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FetchForGallery;
 // CHAT APP
 
 
@@ -23,10 +24,22 @@ Route::middleware('verifyUser')->group(function () {
     Route::post('/getconversations', [Getconversations::class, 'index']);
     Route::post('/createnotification', [GeneralNotifications::class, 'index']);
     Route::post('/updateusersettings', [UserSettings::class, 'index']);
+    Route::post('/save-camera-photo', [CameraController::class, 'index']);
+    Route::post('/FetchForGallery', [FetchForGallery::class, 'index']);
 });
+Route::get('/images/{filename}', function ($filename) {
+    $path = Storage::disk('public')->path('images/' . $filename);
+
+    if (!Storage::disk('public')->exists('images/' . $filename)) {
+        abort(404);
+    }
+
+    return response()->file($path);
+})->where('filename', '.*');
+
 
 // Routes not affected by the middleware
 Route::get('/test', [NonFriendController::class, 'test']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/save-camera-photo', [CameraController::class, 'index']);
+
